@@ -1,0 +1,106 @@
+---
+title: "r-data-types"
+author: "Marie Rivers"
+date: "8/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+## Make some vectors are check them out
+### elements in vectors must be the same class
+### the `c` function is for combind or concatenate
+```{r}
+dogs <- c("teddy", "khora", "waffles", "banjo")
+class(dogs) # it's a great idea to use the console to check the class of things
+typeof(dogs)
+
+dogs <- c("teddy", 40, "waffles", "banjo") # 40 is viewed as a character
+class(dogs) 
+typeof(dogs)
+dogs
+is.character(dogs)
+```
+
+```{r}
+dog_age <- c(1.4, 5.2, 6, 10)
+class(dog_age)
+typeof(dog_age)
+```
+
+```{r}
+dog_miles <- c(4L, 5L, 6L)
+class(dog_miles)
+typeof(dog_miles)
+
+is.character(dog_miles)
+```
+```{r}
+# use c() for vectors in R
+dog_food <- c(teddy = "purina", 
+              khora = "alpo", 
+              waffles = "fancy feast", 
+              banjo = "blue diamond")
+# hitting return after the commas make the vector code easier to read and easier to troubleshoot
+dog_food
+dog_food[2] # use to gegt khora's food or...
+dog_food["khora"]
+khora_food <- dog_food[2]
+khora_food
+khora_food <- dog_food["khora"]
+khora_food
+```
+```{r}
+cars <- c("red", "white", "yellow", "silver", "blue", "Black", "purple")
+cars[2:5]
+
+i <- 3
+cars[i]
+
+i <- c(1, 5, 7)
+cars[i]
+```
+
+## Lists in R
+```{r}
+# vectors must contain all the same types (homogenous). Lists can have differect classes (heterogenous)
+urchins <- list("blue", 2, FALSE, 1200L)
+urchins
+
+# the returned [[1]] refers the 1st element in the list, [[2]] refers to the 2nd element
+
+urchins[[1]] # this returns the contents of that element. Use the double brackets most of the time
+urchins[1] # this returns a list that only contains 1 emement and that elements is "blue"
+```
+```{r}
+urchins_2 <- list("blue", 
+                  c(1, 2, 3), 
+                  seq(from = 0, to = 50, by = 0.5),
+                  1200L)
+urchins_2
+```
+```{r}
+tacos <- list(topping = c("onion", "cilantro", "guacamole"),
+              filling = c("beans", "meat", "veggies"),
+              price = c(6.75, 8.25, 9.50))
+tacos
+
+taco_price <- tacos[[3]]
+tacos$filling
+```
+##Data frames
+```{r}
+fruit <- data.frame(type = c("apple", "banana", "peach"),
+                    mass = c(130, 195, 150))
+fruit
+class(fruit)
+class(fruit$mass)
+fruit$type # get everything in the type column
+fruit[, 1] #left the row term blank
+
+```
+
